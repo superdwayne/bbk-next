@@ -13,15 +13,7 @@ const port = process.env.PORT || 3002;
 app.prepare().then(() => {
   const server = express();
 
-  const corsOptions = {
-    origin: process.env.FRONTEND_URL || 'http://localhost:3000',
-    methods: ['GET', 'POST'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-    credentials: true,
-    optionsSuccessStatus: 204,
-  };
-
-  server.use(cors(corsOptions));
+  server.use(cors());
   server.use(express.json());
 
   server.post('/api/SS-chat', async (req, res) => {
